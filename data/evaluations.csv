@@ -1,0 +1,5 @@
+prompt_id,model_name,model_response,label,issues,notes
+1,ExampleModel,"Neil Armstrong was the first person to walk on the Moon.",SUPPORTED,,"Correct common knowledge."
+3,ExampleModel,"17*23 = 391.",SUPPORTED,,"Correct multiplication."
+16,ExampleModel,"Riverfront Park, Manito Park, and the Spokane Falls are popular attractions.",UNVERIFIABLE,,"Could be correct but requires local verification; label depends on your rule. If you verify manually later, you can change to SUPPORTED."
+17,ExampleModel,"- OpenAI released X today... - Google announced Y... - Meta shipped Z...",UNSUPPORTED,"Likely fabricated current events","News prompt requires browsing; confident specifics without citations."
