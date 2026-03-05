@@ -3,3 +3,527 @@ prompt_id,model_name,model_response,label,issues,notes
 3,ExampleModel,"17*23 = 391.",SUPPORTED,,"Correct multiplication."
 16,ExampleModel,"Riverfront Park, Manito Park, and the Spokane Falls are popular attractions.",UNVERIFIABLE,,"Could be correct but requires local verification; label depends on your rule. If you verify manually later, you can change to SUPPORTED."
 17,ExampleModel,"- OpenAI released X today... - Google announced Y... - Meta shipped Z...",UNSUPPORTED,"Likely fabricated current events","News prompt requires browsing; confident specifics without citations."
+
+prompt_id,model_name,model_response,label,issues,notes
+29,ChatGPT,"<If you forgot your **Gmail password**, you can reset it through your **Google Account recovery page. Here’s the quickest way:
+
+---
+
+## 🔑 Method 1: Reset Using Google’s Account Recovery
+
+1. Go to the Google recovery page:
+   [https://accounts.google.com/signin/recovery](https://accounts.google.com/signin/recovery)
+
+2. Enter your **Gmail address**.
+
+3. Click **Next**.
+
+4. Google will ask for the **last password you remember** (if you know one).
+
+   * If not, click **Try another way**.
+
+5. Choose a recovery option (Google will show what’s available):
+
+   * 📱 **Phone verification** (text or call with a code)
+   * 📧 **Recovery email**
+   * 🔔 **Google prompt on a logged-in device**
+
+6. Enter the **verification code** you receive.
+
+7. Create a **new password**.
+
+8. Confirm it and save.
+
+---
+
+## 💡 Tips for Creating the New Password
+
+Make it:
+
+* At least **12 characters**
+* A mix of **uppercase, lowercase, numbers, and symbols**
+* Not used on other sites
+
+Example structure:
+`BlueCoffee!47River`
+
+---
+
+## 🚨 If You Don’t Have Access to Phone or Recovery Email
+
+1. Go to the same recovery page.
+2. Click **Try another way** until Google offers **identity verification**.
+3. You may need to:
+
+   * Answer security questions
+   * Verify from a device/location you used before
+   * Wait **24–72 hours** for verification.
+
+---
+
+✅ **Fastest success tip:**
+Try resetting from the **same device and Wi-Fi network you usually use for Gmail**. Google trusts those more.
+
+---
+
+If you want, I can also show you:
+
+* ⚡ **The fastest way to recover a Gmail account in under 2 minutes** (many people miss this option).
+>",SUPPORTED,,"external verification needed, Correct."
+
+prompt_id,model_name,model_response,label,issues,notes
+30,ChatGPT,"<**Hallucinations in Large Language Models (LLMs)** happen when the model produces **confident but incorrect or fabricated information**. This occurs because LLMs are trained to **predict likely text**, not to verify facts. Several technical factors commonly cause this.
+
+---
+
+## 1️⃣ Training Data Limitations
+
+If the training data contains **errors, gaps, or biases**, the model may learn incorrect patterns.
+
+**Examples**
+
+* Incorrect facts in scraped web data
+* Outdated information
+* Underrepresented topics or regions
+
+**Result:**
+The model fills missing knowledge with **statistically plausible but wrong content**.
+
+---
+
+## 2️⃣ Next-Token Prediction Objective
+
+LLMs are trained with the objective:
+
+> Predict the **next most probable token**.
+
+This means the model optimizes for **fluency**, not **truthfulness**.
+
+**Example behavior**
+
+* Fabricating a citation
+* Inventing statistics
+* Making up academic papers
+
+Because a **plausible-looking answer scores higher than saying “I don’t know.”**
+
+---
+
+## 3️⃣ Lack of Grounding
+
+A model hallucinate more when it **is not connected to external data sources**.
+
+Without grounding mechanisms such as:
+
+* retrieval systems
+* databases
+* tools
+* APIs
+
+the model must rely **only on internal parameters**.
+
+**Typical hallucination scenario**
+
+```
+User: What did a specific 2024 paper conclude?
+Model: Invents a summary of a paper that does not exist.
+```
+
+---
+
+## 4️⃣ Ambiguous or Underspecified Prompts
+
+If a prompt lacks detail, the model may **fill in missing context**.
+
+Example:
+
+Prompt:
+
+> “Explain the Smith experiment.”
+
+Possible outcomes:
+
+* It guesses which Smith
+* It invents details
+* It mixes multiple experiments
+
+---
+
+## 5️⃣ Long Context Windows
+
+As context grows, models can:
+
+* lose track of earlier information
+* merge unrelated facts
+* distort earlier statements
+
+This is sometimes called **context drift**.
+
+---
+
+## 6️⃣ Overgeneralization From Training Patterns
+
+Models may **blend similar concepts**.
+
+Example:
+
+* Mixing two researchers
+* Combining details from different studies
+* Creating hybrid facts
+
+This happens because representations in the network are **distributed and overlapping**.
+
+---
+
+## 7️⃣ Temperature / Sampling Settings
+
+Higher randomness increases hallucinations.
+
+Common sampling parameters:
+
+* **temperature**
+* **top-p**
+* **top-k**
+
+Higher values → more creative but **less reliable output**.
+
+---
+
+## 8️⃣ Instruction Following Pressure
+
+When prompted strongly, models may prioritize **completing the task** over accuracy.
+
+Example:
+
+```
+User: Write five citations supporting this claim.
+```
+
+If the model cannot recall real ones, it may **fabricate citations**.
+
+---
+
+# Quick Summary Table
+
+| Cause                 | Why it leads to hallucinations |
+| --------------------- | ------------------------------ |
+| Training data issues  | Incorrect or missing knowledge |
+| Next-token prediction | Optimizes for plausibility     |
+| Lack of grounding     | No fact verification           |
+| Ambiguous prompts     | Model fills missing context    |
+| Long contexts         | Information drift              |
+| Overgeneralization    | Concepts blend together        |
+| Sampling randomness   | More creative guesses          |
+| Instruction pressure  | Model forced to answer         |
+
+---
+
+✅ **Modern mitigation strategies** include:
+
+* Retrieval-Augmented Generation (RAG)
+* Tool use and browsing
+* Fact-checking models
+* Reinforcement Learning from Human Feedback (RLHF)
+* Uncertainty estimation
+
+---
+
+I can also show you:
+
+* **5 real hallucination test categories companies use internally**
+* **a simple dataset structure you can add to GitHub**
+* **a scoring rubric evaluators actually use**
+
+It makes the project look **much more like real AI evaluation work.**
+>",SUPPORTED,,"Correct general knowledge."
+
+prompt_id,model_name,model_response,label,issues,notes
+19,ChatGPT,"<The **greenhouse effect** is a natural process where certain gases in Earth’s atmosphere—such as carbon dioxide and methane—trap heat from the Sun. Sunlight enters the atmosphere and warms the planet’s surface, but greenhouse gases absorb and re-emit some of the outgoing heat, keeping the Earth warmer than it would otherwise be. Without the greenhouse effect, Earth would be too cold to support most life. 🌍☀️
+>",SUPPORTED,,"Correct general knowledge."
+
+prompt_id,model_name,model_response,label,issues,notes
+20,ChatGPT,"<![Image](https://images.openai.com/static-rsc-3/KogoudOIcxB7tkw2AbVF8wd6RJw6QNaLq_u-edksIDZGvpvSqWDXrxxjfB5R78XXq6x7WtsfWc6MzZ6H1PUVNWlGkPQkwAT4CrCk0ir7_PQ?purpose=fullsize\&v=1)
+
+![Image](https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/George_Orwell_press_photo.jpg/960px-George_Orwell_press_photo.jpg)
+
+![Image](https://i.guim.co.uk/img/media/cf8d33366cae29582f32e8ded3b03682682bfd02/0_0_2724_1972/master/2724.jpg?crop=none\&dpr=1\&s=none\&width=445)
+
+![Image](https://lessonplans.dwrl.utexas.edu/sites/default/files/Orwell.jpg)
+
+***George Orwell*** wrote the novel ***Nineteen Eighty-Four***, commonly written as **1984**.
+
+### Quick facts 📚
+
+* **Published:** 1949
+* **Genre:** Dystopian fiction / political satire
+* **Author’s real name:** Eric Arthur Blair
+* **Famous concepts from the book:**
+
+  * **Big Brother** 👁️
+  * **Thought Police**
+  * **Newspeak**
+  * **“War is Peace. Freedom is Slavery. Ignorance is Strength.”**
+
+### What the book is about
+
+The story follows **Winston Smith**, a man living in a totalitarian state called **Oceania** where the government, led by **Big Brother**, constantly surveils and controls citizens.
+
+The novel explores themes like:
+
+* Government surveillance
+* Propaganda and manipulation of truth
+* Loss of individual freedom
+* Psychological control
+
+### Why it’s famous
+
+Many terms from the book are still used today. For example, **“Orwellian”** describes situations involving extreme surveillance or government control.
+
+---
+
+If you'd like, I can also explain:
+
+* The **real historical inspiration behind *1984***
+* The **3 predictions from the book that people think came true** 👀
+* Or a **2-minute summary of the entire plot**.
+>",SUPPORTED,,"Correct common knowledge."
+
+prompt_id,model_name,model_response,label,issues,notes
+14,ChatGPT,"<The difference between **affect** and **effect** mainly comes down to **verb vs. noun**.
+
+## 1️⃣ Affect (usually a verb)
+
+**Affect** means **to influence or change something**.
+
+**Structure:**
+**A affects B**
+
+**Examples:**
+
+* Lack of sleep **affects** your concentration.
+* Social media **affects** how people communicate.
+* Weather can **affect** travel plans.
+
+👉 Think: **Affect = Action**
+
+---
+
+## 2️⃣ Effect (usually a noun)
+
+**Effect** means **a result or outcome**.
+
+**Structure:**
+**A has an effect on B**
+
+**Examples:**
+
+* Lack of sleep has a negative **effect** on your concentration.
+* The new policy had a positive **effect** on productivity.
+* Exercise has many health **effects**.
+
+👉 Think: **Effect = End result**
+
+---
+
+## 3️⃣ Quick memory trick
+
+A simple way many people remember:
+
+**A**ffect = **A**ction (verb)
+**E**ffect = **E**nd result (noun)
+
+---
+
+## 4️⃣ Rare exceptions (advanced)
+
+These appear mostly in academic writing:
+
+* **Effect (verb)** = *to cause something to happen*
+
+  * “The new CEO **effected** major changes in the company.”
+
+* **Affect (noun)** = *a psychological term meaning emotional expression*
+
+  * “The patient showed a flat **affect**.”
+
+Most people **never need these in normal writing**.
+
+---
+
+✅ **Simple rule for 95% of cases:**
+
+* **Affect = influence (verb)**
+* **Effect = result (noun)**
+
+---
+
+If you'd like, I can also show you a **5-second test that guarantees you pick the right one every time**. It’s a trick editors use. ✏️
+>",SUPPORTED,,"Correct general knowledge."
+
+prompt_id,model_name,model_response,label,issues,notes
+8,ChatGPT,"<An **ETF (Exchange-Traded Fund)** is basically a **basket of investments you can buy and sell like a stock.**
+
+Think of it like this:
+
+### 🧺 Simple Analogy
+
+Imagine you go to the grocery store and instead of buying **one apple**, you buy a **fruit basket** that contains:
+
+* Apples
+* Bananas
+* Oranges
+* Grapes
+
+You now own **a little bit of each fruit** instead of just one.
+
+An **ETF works the same way with investments.**
+
+Instead of buying **one company’s stock**, you buy a **basket of many companies at once**.
+
+---
+
+### 📈 Example
+
+If you buy an ETF that tracks the **S&P 500**, you are essentially investing in **500 large U.S. companies at the same time**, such as:
+
+* Apple
+* Microsoft
+* Amazon
+* NVIDIA
+
+You don’t have to buy each stock individually.
+
+---
+
+### 🔑 Key Features of ETFs
+
+**1. Diversification**
+You own many assets at once, which spreads risk.
+
+**2. Trades like a stock**
+You can buy or sell it anytime during the market day on an exchange.
+
+**3. Usually low fees**
+Most ETFs are inexpensive compared to actively managed funds.
+
+**4. Tracks something**
+Most ETFs follow an index, sector, or theme (like tech, AI, or energy).
+
+---
+
+### 💡 Quick Example
+
+A very popular ETF is:
+
+* Vanguard S&P 500 ETF (VOO)
+
+Buying **one share of VOO** gives you exposure to the **entire S&P 500**.
+
+---
+
+✅ **In one sentence:**
+An **ETF is a fund that holds many investments and trades on the stock market like a single stock.**
+
+---
+
+If you'd like, I can also show you:
+
+* **The 3 ETFs most beginners buy first**
+* **How people build a simple ETF portfolio that grows over time**
+* **Why ETFs are often recommended for passive income investors** 📊
+>",SUPPORTED,,"Correct general knowledge."
+
+prompt_id,model_name,model_response,label,issues,notes
+2,ChatGPT,"<The chemical symbol for **gold** is **Au** 🟡
+
+**Why Au?**
+It comes from the Latin word for gold, ***Aurum***, which means “shining dawn” or “glow of sunrise.”
+
+**Quick facts about gold:**
+
+* **Symbol:** Au
+* **Atomic number:** 79
+* **Element type:** Transition metal
+* **Periodic table group:** Group 11 (same group as copper and silver)
+
+Gold’s symbol being **Au** instead of **G** is similar to other elements whose symbols come from Latin, like:
+
+* **Silver — Ag** (from *Argentum*)
+* **Iron — Fe** (from *Ferrum*)
+* **Copper — Cu** (from *Cuprum*)
+
+If you'd like, I can also show you a **simple trick to memorize the most common periodic table symbols used in tech, chemistry, and finance**.
+>",SUPPORTED,,"Correct common knowledge."
+
+prompt_id,model_name,model_response,label,issues,notes
+5,ChatGPT,"<Photosynthesis is the process by which plants, algae, and some bacteria use sunlight to convert carbon dioxide and water into glucose and oxygen.
+>",SUPPORTED,,"Correct common knowledge."
+
+prompt_id,model_name,model_response,label,issues,notes
+13,ChatGPT,"<The **square root of 144 is 12**.
+
+This is because:
+
+[
+12 \times 12 = 144
+]
+
+So, ( \sqrt{144} = 12 ).
+>",SUPPORTED,,"Correct math knowledge."
+
+prompt_id,model_name,model_response,label,issues,notes
+24,ChatGPT,"<No — **Iceland is *not* part of the European Union (EU).** 🇮🇸
+
+However, its relationship with Europe is a little unique.
+
+### 🇮🇸 Iceland’s Relationship with the EU
+
+* **Not an EU member**
+* **Part of the European Economic Area (EEA)**
+* **Part of the Schengen Area**
+
+This means Iceland participates in many European systems even though it isn’t officially in the EU.
+
+### What Iceland *does* participate in
+
+**1. European Economic Area (EEA)**
+Through the European Economic Area agreement, Iceland gets access to the **EU single market**.
+That means:
+
+* Free movement of **goods**
+* Free movement of **services**
+* Free movement of **capital**
+* Free movement of **people**
+
+But Iceland **does not vote on EU laws**.
+
+**2. Schengen Area**
+Iceland is part of the Schengen Area, meaning:
+
+* No passport checks between most European countries
+* Shared border policies
+
+### What Iceland does *not* do
+
+Because it is not an EU member, Iceland:
+
+* Does **not use the euro**
+* Keeps its own currency: the **Icelandic króna**
+* Is not in EU agricultural or fisheries policies (important for Iceland)
+
+### Interesting history
+
+Iceland **applied to join the EU in 2009** after the financial crisis but **withdrew its application in 2015**.
+
+---
+
+✅ **Short answer:**
+
+* EU member: ❌ No
+* In EU single market: ✔️ Yes (via EEA)
+* In Schengen: ✔️ Yes
+
+---
+
+If you're curious, I can also show you **the 5 European countries that are *not* in the EU but are tightly integrated with it** — the list surprises most people. 🌍
+>",SUPPORTED,,"Correct general knowledge."
