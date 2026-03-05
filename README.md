@@ -1,25 +1,26 @@
 # LLM Hallucination Detection Benchmark (Mini)
 
-A small, transparent benchmark to evaluate hallucination tendencies in LLM responses.
+A small, transparent benchmark for evaluating hallucination tendencies in LLM responses.
 
-## What this repo contains
-- `data/prompts.csv`: 30 test prompts across domains
-- `data/evaluations.csv`: labeled outcomes using a simple rubric
-- `docs/labeling_guidelines.md`: labeling rules and edge cases
-- `docs/examples.md`: worked examples with rationale
-- `tools/summarize_results.py`: quick summary stats
+## What’s inside
+- `data/prompts.csv` — prompts across domains
+- `data/evaluations.csv` — model outputs + labels
+- `docs/labeling_guidelines.md` — rules + edge cases
+- `docs/examples.md` — worked examples with rationale
+- `tools/summarize_results.py` — summary stats
+- `gold/gold_set.csv` — adjudicated edge cases (added)
+- `qa/qa_log.csv` — disagreement/adjudication log (added)
 
 ## Label schema
-- **SUPPORTED**: Claims are grounded in prompt/context or widely verifiable facts
-- **UNSUPPORTED**: Contains fabricated or incorrect claims
-- **MIXED**: Combination of supported + unsupported claims
-- **UNVERIFIABLE**: Cannot be verified without external sources or the model refuses / is too vague
+- **SUPPORTED**: grounded in prompt/context or widely verifiable
+- **UNSUPPORTED**: fabricated or incorrect claims
+- **MIXED**: combination of supported + unsupported
+- **UNVERIFIABLE**: cannot be verified without external sources, or too vague/refusal
 
-## How to use
-1) Run prompts through any model(s) you want to evaluate.
-2) Paste model outputs into `data/evaluations.csv`.
-3) Label each response using the rubric.
-4) Run summary: `python tools/summarize_results.py`
-
-## Why this matters
-Rater work often involves judging whether outputs are grounded, faithful, and safe—this repo demonstrates that evaluation workflow in a reproducible format.
+## How to run
+1) Generate outputs for each prompt (any model)
+2) Paste outputs into `data/evaluations.csv`
+3) Label using `docs/labeling_guidelines.md`
+4) Run:
+```bash
+python tools/summarize_results.py
